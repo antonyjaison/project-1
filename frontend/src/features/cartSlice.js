@@ -10,13 +10,11 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.cartProducts = action.payload;
-      console.log(state.cartProducts)
     },
     deleteFromCart: (state, action) => {
       state.cartProducts = state.cartProducts.filter(
         (item) => item._id !== action.payload
       );
-      console.log("cart", state.cartProducts);
     },
   },
 });

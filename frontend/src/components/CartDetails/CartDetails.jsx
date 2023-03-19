@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import CartCard from "../CartCard/CartCard";
 import Address from "../Address/Address";
+import PlaceOrder from "../PlaceOrder/PlaceOrder";
 import "./CartDetails.css";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -10,13 +11,15 @@ const CartDetails = () => {
   const userData = localStorage.getItem("userData");
   const token = JSON.parse(userData).token;
   const [addressSection, setAddressSection] = useState(false);
+  const [placeOrderSection, setplaceOrderSection] = useState(false)
+  const [address, setAddress] = useState([])
+
   const mainWrapperRef = useRef();
 
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart.cartProducts);
-  console.log(cartProducts);
 
-  var count = 0;
+var count = 0;
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -65,10 +68,13 @@ const CartDetails = () => {
       },
     });
     const json = await res.json();
+    console.log(json)
 
     if (!json.addressFind) {
       setAddressSection(true);
-      // mainWrapperRef.current.style.backgroundColor='#7f7f7f'
+    }else{
+      setAddress(json)
+      setplaceOrderSection(true)
     }
   };
 
@@ -150,6 +156,13 @@ const CartDetails = () => {
           <>
             <div className="address_wrapper">
               <Address />
+            </div>
+          </>
+        )}
+        {placeOrderSection && (
+          <>
+            <div className="address_wrapper">
+              <PlaceOrder/>
             </div>
           </>
         )}
