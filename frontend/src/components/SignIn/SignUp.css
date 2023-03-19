@@ -1,83 +1,136 @@
-.login_wrapper {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login_section {
-    width: 35%;
-    height: 75vh;
+.signin_wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin_section {
+  width: 500px;
+  height: 680px;
+  background-color: #f1f1f1;
+  padding: 47px 57px;
+}
+.signin_heading {
+  text-align: center;
+}
+
+.signin_heading > h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 48px;
+  color: #000000;
+}
+.login_heading > p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  margin-top: 10px;
+}
+.signin_line {
+  margin: 30px 0;
+}
+
+/* form */
+.signin_form > p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+}
+.signin_form > input {
+  margin-top: 8px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #adadad;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+.signin_terms > p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  color: #000000;
+  margin-bottom: 30px;
+}
+.signin_terms > p > span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.policy,
+.terms {
+  font-size: 14px;
+}
+.Signin_button {
+  background: #f3db00;
+  border-radius: 5px;
+  padding: 10px 90px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .signin_section {
+    width: 80%;
+    height: 680px;
     background-color: #f1f1f1;
-    padding: 47px 57px;
+    padding: 47px 30px;
   }
-  .login_heading {
-    text-align: center;
+}
+
+@media (max-width: 430px) {
+  .signin_section {
+    width: 80%;
+    height: 425px;
+    height: fit-content;
+    background-color: #f1f1f1;
+    padding: 20px 25px;
   }
-  
-  .login_heading > h1 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 48px;
-    color: #000000;
+  .signin_form > p {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .signin_form > input {
+    margin-top: 6px;
+    border: 0.7px solid #adadad;
+    padding: 2px;
+    margin-bottom: 20px;
+  }
+  .signin_heading > h1 {
+    font-size: 25.2px;
+    line-height: 33px;
   }
   .login_heading > p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    color: #000000;
-    margin-top: 10px;
+    font-size: 14px;
+    line-height: 19px;
   }
-  .login_line {
-    margin: 30px 0;
+  .signin_line {
+    margin: 20px 0;
   }
-  
-  /* form */
-  .login_form > p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    color: #000000;
-  }
-  .login_form > input {
-    margin-top: 8px;
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid #adadad;
-    padding: 5px;
-    margin-bottom: 30px;
-  }
-  .login_terms > p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 22px;
-    color: #000000;
-    margin-bottom: 30px;
-  }
-  .login_terms > p > span {
-    text-decoration: underline;
-    cursor: pointer;
+  .signin_terms > p {
+    font-size: 11.9px;
+    line-height: 10px;
   }
   .policy,
   .terms {
-    font-size: 14px;
+    font-size: 9.8px;
   }
   .Signin_button {
     background: #f3db00;
-    border-radius: 5px;
-    padding: 10px 90px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    color: #000000;
-    border: none;
+    border-radius: 3.5px;
+    padding: 7px 65px;
+    font-size: 13px;
   }
-  
+}

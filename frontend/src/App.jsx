@@ -8,6 +8,7 @@ import CartPage from "./pages/CartPage";
 import SignInPage from "./pages/SignInPage";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../src/features/userSlice";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function App() {
             path="/sign-in"
             element={user === null ? <Navigate to="/" /> : <SignInPage />}
           />
-          <Route />
+          <Route path="/orders/:id" element={user === null ? <Navigate to='/login'/> : <OrderPage/>}/>
         </Routes>
       </BrowserRouter>
     </>

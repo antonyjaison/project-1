@@ -19,3 +19,17 @@
   width: 800px;
   margin-bottom: 76px;
 }
+@media(max-width:992px){
+  .banner_heading > h1 {
+    font-size: 60px;
+    line-height: 80px;
+    width: fit-content;
+  } 
+}
+@media(max-width:430px){
+  .banner_heading > h1 {
+    font-size: 40px;
+    line-height: 60px;
+    width: fit-content;
+  } 
+}

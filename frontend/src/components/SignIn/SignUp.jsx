@@ -45,15 +45,15 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="login_wrapper">
-      <div className="login_section">
-        <div className="login_heading">
+    <div className="signin_wrapper">
+      <div className="signin_section">
+        <div className="signin_heading">
           <h1>User Signup</h1>
           <p>Signup for shopping</p>
         </div>
-        <hr className="login_line" />
+        <hr className="signin_line" />
 
-        <form className="login_form">
+        <form className="signin_form">
           <p>Name</p>
           <input
             onChange={(e) => setName(e.target.value)}
@@ -75,7 +75,7 @@ const SignUp = () => {
             type="password"
           />
 
-          <div className="login_terms">
+          <div className="signin_terms">
             <p>
               Already have an account?
               <span onClick={() => navigate("/login")}>Login</span>
