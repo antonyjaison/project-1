@@ -1,18 +1,18 @@
 import React from "react";
 import "./CartCard.css";
 
-const CartCard = () => {
+const CartCard = ({ count, product,removeFromCart }) => {
   const option = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <div className="cartCard_wrapper">
       <div className="cart_product_details">
-        <img src="./images/cardImg.png" alt="" />
+        <img src={product.image} alt="" />
         <div className="cart_details">
           <div className="cart_card_heading">
-            <h2>The Kitchen Chair</h2>
+            <h2>{product.name}</h2>
             <div className="quantity">
               <label htmlFor="">Qty : </label>
-              <select name="quantity" id="quantity">
+              <select name="quantity" value={count} id="quantity">
                 {option.map((num) => (
                   <option value={num}>{num}</option>
                 ))}
@@ -20,11 +20,11 @@ const CartCard = () => {
             </div>
           </div>
 
-          <p className="cart_price">$49.99</p>
+          <p className="cart_price">Rs. {product.price}</p>
         </div>
       </div>
 
-      <p className="cart_remove">Remove</p>
+      <p onClick={removeFromCart} className="cart_remove">Remove</p>
     </div>
   );
 };
