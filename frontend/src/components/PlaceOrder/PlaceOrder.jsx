@@ -1,23 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PlaceOrder.css";
+import { useSelector } from "react-redux";
+import ClipLoader from "react-spinners/ClipLoader";
 
-const PlaceOrder = () => {
+const PlaceOrder = ({
+  country,
+  city,
+  landmark,
+  pincode,
+  state,
+  setplaceOrderSection,
+}) => {
+  const cartProducts = useSelector((state) => state.cart.cartProducts);
+  console.log(cartProducts);
+  const [loading, setLoading] = useState(false);
+
+  let orderItems = [];
+
+  cartProducts.forEach((item) => {
+    orderItems.push({
+      id: item.product._id,
+      count: item.count,
+    });
+  });
+
+  const userData = localStorage.getItem("userData");
+  const token = JSON.parse(userData).token;
+
+  const placeOrder = async () => {
+    setLoading(true)
+    const res = await fetch("http://localhost:4000/order/", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(orderItems),
+    });
+    if (res.ok) {
+      const json = await res.json();
+      setplaceOrderSection(false);
+      console.log("data", json.order_items);
+      setLoading(false)
+    }
+  };
+
   return (
     <div className="place_order_wrapper">
       <div className="order_section">
         <div className="order_heading">
           <h1>Your delivery address</h1>
+          <div className="closebutton">
+            <p onClick={() => setplaceOrderSection(false)}>x</p>
+          </div>
         </div>
         <hr className="order_line" />
 
         <div className="order_address">
-          <p>Country : Angamaly</p>
-          <p>State : Angamaly</p>
-          <p>City : Angamaly</p>
-          <p>Pincode : Angamaly</p>
-          <p>Landmark : Angamaly</p>
+          <p>Country : {country}</p>
+          <p>State : {state}</p>
+          <p>City : {city}</p>
+          <p>Pincode : {pincode}</p>
+          <p>Landmark : {landmark}</p>
         </div>
-        <button className="order_place_button">Place order</button>
+        <button onClick={() => placeOrder()} className="order_place_button">
+          {loading ? (
+            <ClipLoader size={20} color="#000" loading={loading} />
+          ) : (
+            "Place order"
+          )}
+        </button>
       </div>
     </div>
   );

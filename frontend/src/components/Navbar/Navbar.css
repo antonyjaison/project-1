@@ -19,3 +19,22 @@
     line-height: 29px;
     cursor: pointer;
 }
+.mobile_icon {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .nav_links {
+    gap: 50px;
+  }
+  .nav_links > p {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  .nav_links {
+    display: none;
+  }
+  .mobile_icon {
+    display: block;
+  }
+}

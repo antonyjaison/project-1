@@ -49,3 +49,22 @@
   cursor: pointer;
   margin-bottom: 24px;
 }
+@media(max-width:600px){
+  .footer_bottom_section > p {
+    font-size: 14.7px;
+    line-height: 19px;
+  }
+  .footer_link > h2 {
+    font-size: 19.6px;
+    line-height: 26px;
+  }
+  .footer_link > p {
+    font-size: 15.4px;
+    line-height: 20px;
+  }
+  .footer_logo > p {
+    font-size: 14.7px;
+    line-height: 19px;
+    margin-top: 15px;
+  }
+}

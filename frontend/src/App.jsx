@@ -10,10 +10,13 @@ import AdminPage from "./pages/AdminPage";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "./features/userSlice";
 import { useState } from "react";
+import OrderPage from "./pages/OrderPage";
+
 
 function App() {
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
+
 
     const isAdmin = () => {
         return user !== null && user?.userData.userType === "ADMIN";

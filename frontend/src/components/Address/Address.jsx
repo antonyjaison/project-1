@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Address.css";
 
-const Address = () => {
+const Address = ({ setAddressSection, setCheckoutLoading }) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [pincode, setPincode] = useState("");
@@ -10,8 +10,6 @@ const Address = () => {
 
   const userData = localStorage.getItem("userData");
   const token = JSON.parse(userData).token;
-
-  //   const data = ;
 
   const addAddress = async (e) => {
     e.preventDefault();
@@ -34,6 +32,8 @@ const Address = () => {
       if (res.ok) {
         const json = await res.json();
         console.log(json);
+        setAddressSection(false);
+        setCheckoutLoading(false);
       }
     } catch (err) {
       console.log(err);
@@ -44,13 +44,13 @@ const Address = () => {
     <>
       <div className="address_wrapper">
         <div className="address_section">
-          <div className="login_heading">
+          <div className="address_heading">
             <h1>User Address</h1>
             <p>Add address to checkout</p>
           </div>
-          <hr className="login_line" />
+          <hr className="address_line" />
 
-          <form className="login_form">
+          <form className="address_form">
             <p>City</p>
             <input
               value={city}
@@ -86,7 +86,7 @@ const Address = () => {
               type="text"
             />
 
-            <button onClick={(e) => addAddress(e)} className="Signin_button">
+            <button onClick={(e) => addAddress(e)} className="address_button">
               Add address
             </button>
           </form>

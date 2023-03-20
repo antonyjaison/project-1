@@ -58,3 +58,38 @@
 .cart_remove {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .cartCard_wrapper {
+    height: 123px;
+    border: 1.12px solid #c4c4c4;
+    border-radius: 2.8px;
+    padding: 0 20px 0 20px;
+  }
+  .cart_product_details > img {
+    width: 89.04px;
+    height: 89.04px;
+  }
+  .cart_card_heading > h2 {
+    font-size: 15.04px;
+    line-height: 20px;
+  }
+  .quantity > label {
+    font-size: 14.56px;
+    line-height: 19px;
+  }
+  .quantity > select {
+    background: #d9d9d9;
+    border: 0.5px solid #959595;
+    padding: 0px 0px;
+    margin-left: 10px;
+  }
+  .cart_price,
+  .cart_remove {
+    font-size: 11.76px;
+    line-height: 16px;
+  }
+  .quantity {
+    margin-top: 8px;
+  }
+}

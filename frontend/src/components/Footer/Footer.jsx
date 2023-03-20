@@ -8,13 +8,29 @@ const Footer = () => {
       <div className="footer_wrapper">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 footer_logo">
+            <div className="col-lg-4 col-md-6 col-12 footer_logo">
               <Logo fontSize={44} />
               <p>
                 Selling chairs <br /> since 1990
               </p>
             </div>
-            <div className="col-lg-9 footer_link_section">
+            <div className="col-lg-4 col-md-6 col-12 mt-4">
+              <div className="footer_link">
+                <h2>Social media</h2>
+                <p>Instagram</p>
+                <p>Twitter</p>
+                <p>YouTube</p>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-4 col-12 mt-4">
+              <div className="footer_link">
+                <h2>Contact Us</h2>
+                <p>Mail us</p>
+                <p>Call us</p>
+              </div>
+            </div>
+
+            {/* <div className="col-lg-9 col-8 col-12 footer_link_section">
               <div className="footer_link">
                 <h2>Social media</h2>
                 <p>Instagram</p>
@@ -26,7 +42,7 @@ const Footer = () => {
                 <p>Mail us</p>
                 <p>Call us</p>
               </div>
-            </div>
+            </div> */}
 
             <div className="container">
               <hr className="footer_line" />

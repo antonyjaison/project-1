@@ -1,7 +1,8 @@
 import React from "react";
+import OrderItems from "../OrderItems/OrderItems";
 import "./CartCard.css";
 
-const CartCard = ({ count, product,removeFromCart }) => {
+const CartCard = ({ count, product, removeFromCart, isOrderItem, status }) => {
   const option = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <div className="cartCard_wrapper">
@@ -12,19 +13,27 @@ const CartCard = ({ count, product,removeFromCart }) => {
             <h2>{product.name}</h2>
             <div className="quantity">
               <label htmlFor="">Qty : </label>
-              <select name="quantity" value={count} id="quantity">
-                {option.map((num) => (
-                  <option value={num}>{num}</option>
-                ))}
-              </select>
+              {!isOrderItem ? (
+                <select name="quantity" value={count} id="quantity">
+                  {option.map((num) => (
+                    <option value={num}>{num}</option>
+                  ))}
+                </select>
+              ) : (
+                <span>{count}</span>
+              )}
             </div>
           </div>
 
           <p className="cart_price">Rs. {product.price}</p>
+          {isOrderItem && <p className="cart_price">Order status : {status}</p>}
         </div>
       </div>
-
-      <p onClick={removeFromCart} className="cart_remove">Remove</p>
+      {!isOrderItem && (
+        <p onClick={removeFromCart} className="cart_remove">
+          Remove
+        </p>
+      )}
     </div>
   );
 };

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import Logo from "../Logo/Logo";
+
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, setUser } from "../../features/userSlice";
@@ -38,6 +39,7 @@ const Navbar = ({ isDark }) => {
             </div>
         </div>
     );
+
 };
 
 export default Navbar;

@@ -1,4 +1,5 @@
 import React from 'react'
+import Address from '../components/Address/Address'
 import Banner from '../components/Banner/Banner'
 import Footer from '../components/Footer/Footer'
 import Login from '../components/Login/Login'

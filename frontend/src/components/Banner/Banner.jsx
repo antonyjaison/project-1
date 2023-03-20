@@ -1,13 +1,12 @@
 import React from "react";
-import Logo from "../Logo/Logo";
 import Navbar from "../Navbar/Navbar";
 import "./Banner.css";
 
-const Banner = ({ bannerImg,heading}) => {
+const Banner = ({ bannerImg, heading }) => {
   return (
     <>
       <div className="banner_wrapper">
-        <Navbar/>
+        <Navbar />
         <div className="container banner_heading">
           <h1>{heading}</h1>
         </div>

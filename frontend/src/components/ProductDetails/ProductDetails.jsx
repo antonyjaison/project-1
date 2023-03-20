@@ -26,7 +26,7 @@ const ProductDetails = () => {
   }, []);
 
   const addToCart = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await fetch(`http://localhost:4000/cart/${id}`, {
         method: "POST",
@@ -39,39 +39,54 @@ const ProductDetails = () => {
       if (res.ok) {
         const json = await res.json();
         console.log(json);
-        setLoading(false)
+        setLoading(false);
       }
     } catch (err) {
       console.log(err);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <div className="container productDetails_wrapper">
-        <div className="row">
-          <div className="col-lg-5 product_image">
-            <img src={productDetails.image} alt="" />
-          </div>
-          <div className="col-lg-7 product_details_section">
-            <h1>{productDetails.name}</h1>
-            <p>{productDetails.description}</p>
-            <p>
-              Starts at <span>Rs. {productDetails.price}</span>
-            </p>
-            <button onClick={() => addToCart()} className="buy_button">
-              {loading ? (
-                <ClipLoader
-                  aria-label="Loading Spinner"
-                  color="#000"
-                  loading={loading}
-                  size={20}
-                />
-              ) : (
-                "Add to Cart"
-              )}
-            </button>
+      <div className="container">
+        <div className="productDetails_wrapper">
+          <div className="row">
+            {productDetails ? (
+              <>
+                <div className="col-lg-6 col-md-7 col-12 product_image">
+                  <div className="image">
+                    <img src={productDetails.image} alt="" />
+                  </div>
+                </div>
+                <div className="col-lg-6 col-md-5 col-12 product_details_section">
+                  <h1>{productDetails.name}</h1>
+                  <p>{productDetails.description}</p>
+                  <p>
+                    Starts at <span>Rs. {productDetails.price}</span>
+                  </p>
+                  <button onClick={() => addToCart()} className="buy_button">
+                    {loading ? (
+                      <ClipLoader
+                        aria-label="Loading Spinner"
+                        color="#z000"
+                        loading={loading}
+                        size={20}
+                      />
+                    ) : (
+                      "Add to Cart"
+                    )}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <ClipLoader
+                aria-label="Loading Spinner"
+                color="#z000"
+                loading={loading}
+                size={20}
+              />
+            )}
           </div>
         </div>
       </div>

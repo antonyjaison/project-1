@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
-import CartDetails from "../components/CartDetails/CartDetails";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
+import OrderItems from "../components/OrderItems/OrderItems";
 
-const CartPage = () => {
+const OrderPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div>
       <Navbar isDark={true} />
-      <CartDetails />
+      <OrderItems />
       <Footer />
     </div>
   );
 };
 
-export default CartPage;
+export default OrderPage;
