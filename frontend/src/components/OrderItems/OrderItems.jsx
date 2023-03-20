@@ -48,17 +48,14 @@ const OrderItems = () => {
                   <div className="row">
                     <h1>My Orders</h1>
                     {orders.map((order) => (
-                      <>
-                        <div className="col-lg-6 mt-3">
-                          <CartCard
-                            isOrderItem={true}
-                            key={order.product._id}
-                            count={order.product.count}
-                            product={order.product.product}
-                            status={order.status}
-                          />
-                        </div>
-                      </>
+                      <div key={order.product._id} className="col-lg-6 mt-3">
+                        <CartCard
+                          isOrderItem={true}
+                          count={order.product.count}
+                          product={order.product.product}
+                          status={order.status}
+                        />
+                      </div>
                     ))}
                   </div>
                 </>

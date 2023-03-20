@@ -14,9 +14,16 @@ const CartCard = ({ count, product, removeFromCart, isOrderItem, status }) => {
             <div className="quantity">
               <label htmlFor="">Qty : </label>
               {!isOrderItem ? (
-                <select name="quantity" value={count} id="quantity">
+                <select
+                  onChange={() => {}}
+                  name="quantity"
+                  value={count}
+                  id="quantity"
+                >
                   {option.map((num) => (
-                    <option value={num}>{num}</option>
+                    <option key={num} value={num}>
+                      {num}
+                    </option>
                   ))}
                 </select>
               ) : (

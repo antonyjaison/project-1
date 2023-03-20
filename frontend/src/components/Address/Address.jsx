@@ -29,10 +29,9 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
           landMark: landMark,
         }),
       });
-      
+
       if (res.ok) {
         const json = await res.json();
-        console.log(json);
         setAddressSection(false);
         setCheckoutLoading(false);
       }
@@ -54,6 +53,7 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
           <form className="address_form">
             <p>City</p>
             <input
+              required
               value={city}
               onChange={(e) => setCity(e.target.value)}
               type="text"
@@ -61,6 +61,7 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
 
             <p>State</p>
             <input
+              required
               value={state}
               onChange={(e) => setState(e.target.value)}
               type="text"
@@ -68,6 +69,7 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
 
             <p>Pincode</p>
             <input
+              required
               value={pincode}
               onChange={(e) => setPincode(e.target.value)}
               type="text"
@@ -75,6 +77,7 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
 
             <p>Country</p>
             <input
+              required
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               type="text"
@@ -82,6 +85,7 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
 
             <p>Landmark</p>
             <input
+              required
               value={landMark}
               onChange={(e) => setLandMark(e.target.value)}
               type="text"

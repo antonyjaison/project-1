@@ -1,9 +1,8 @@
 .users_tab {
-    min-height: 100%;
-    overflow: hidden;
+  overflow: auto;
 }
 
 .select {
-    height: max-content;
-    padding: 0.5rem 0.25rem;
+  height: max-content;
+  padding: 0.5rem 0.25rem;
 }

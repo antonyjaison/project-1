@@ -35,10 +35,8 @@ const ProductDetails = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res);
       if (res.ok) {
         const json = await res.json();
-        console.log(json);
         setLoading(false);
       }
     } catch (err) {

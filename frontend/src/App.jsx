@@ -26,7 +26,6 @@ function App() {
     setLoading(false);
   }, []);
   const user = useSelector((state) => state.user.user);
-  console.log(user);
   if (loading) return <div>Loading</div>;
   return (
     <>
@@ -54,7 +53,7 @@ function App() {
             element={isAdmin() ? <AdminPage /> : <Navigate to="/" />}
           />
           <Route
-            path="/orders/:id"
+            path="/order/:id"
             element={user === null ? <Navigate to="/" /> : <OrderPage />}
           />
           <Route />
