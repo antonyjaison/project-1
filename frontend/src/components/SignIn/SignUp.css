@@ -10,9 +10,10 @@
 
 .signin_section {
   width: 500px;
-  height: 680px;
+  max-height: 90vh;
   background-color: #f1f1f1;
-  padding: 47px 57px;
+  padding: 2.5rem 4rem;
+  overflow: auto;
 }
 .signin_heading {
   text-align: center;

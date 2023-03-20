@@ -9,7 +9,6 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
 
-  console.log(user);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,8 +34,7 @@ const SignUp = () => {
       });
       if (res.ok) {
         const json = await res.json();
-        console.log(json);
-        dispatch(setUser(json))
+        dispatch(setUser(json));
         setEmail("");
         setName("");
         setPassword("");

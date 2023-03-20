@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./PlaceOrder.css";
 import { useSelector } from "react-redux";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useNavigate } from "react-router";
 
 const PlaceOrder = ({
   country,
@@ -12,8 +13,8 @@ const PlaceOrder = ({
   setplaceOrderSection,
 }) => {
   const cartProducts = useSelector((state) => state.cart.cartProducts);
-  console.log(cartProducts);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   let orderItems = [];
 
@@ -28,7 +29,7 @@ const PlaceOrder = ({
   const token = JSON.parse(userData).token;
 
   const placeOrder = async () => {
-    setLoading(true)
+    setLoading(true);
     const res = await fetch("http://localhost:4000/order/", {
       method: "post",
       headers: {
@@ -41,8 +42,8 @@ const PlaceOrder = ({
     if (res.ok) {
       const json = await res.json();
       setplaceOrderSection(false);
-      console.log("data", json.order_items);
-      setLoading(false)
+      setLoading(false);
+      navigate(`/order/${userData._id}`);
     }
   };
 

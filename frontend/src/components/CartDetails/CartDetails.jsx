@@ -13,7 +13,7 @@ const CartDetails = () => {
   const token = JSON.parse(userData).token;
   const [addressSection, setAddressSection] = useState(false);
   const [placeOrderSection, setplaceOrderSection] = useState(false);
-  const [address, setAddress] = useState([]);
+  const [address, setAddress] = useState();
   const [loading, setLoading] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
 
@@ -72,10 +72,9 @@ const CartDetails = () => {
       },
     });
     const json = await res.json();
-    console.log(json);
 
     if (json.addressFound) {
-      setAddress(json.address);
+      setAddress(json);
       setAddressSection(false);
       setCheckoutLoading(false);
       setplaceOrderSection(true);
@@ -83,7 +82,6 @@ const CartDetails = () => {
       setAddressSection(true);
     }
   };
-  console.log(address);
   return (
     <>
       <div className="main_wrapper">
@@ -107,7 +105,7 @@ const CartDetails = () => {
 
                   <div className="cart_card_section">
                     {cartProducts.map((item) => (
-                      <div className="cart_card">
+                      <div key={item._id} className="cart_card">
                         <CartCard
                           key={item._id}
                           count={item.count}
@@ -136,7 +134,7 @@ const CartDetails = () => {
 
                       {cartProducts.map((item) => {
                         return (
-                          <div className="cart_item_details">
+                          <div key={item._id} className="cart_item_details">
                             <div className="card_product">
                               <p>
                                 {++count}. {item.product.name}

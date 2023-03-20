@@ -6,7 +6,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const ProductsSection = () => {
   const products = useSelector((state) => state.product.products);
-  console.log(products);
 
   return (
     <>

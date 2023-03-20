@@ -15,7 +15,7 @@ const Navbar = ({ isDark }) => {
   const userData = localStorage.getItem("userData");
   const user = JSON.parse(userData);
   const User = useSelector((state) => state.user.user);
-  const [menu, setMenu] = useState(false)
+  const [menu, setMenu] = useState(false);
 
   const icon = (
     <svg
@@ -23,11 +23,11 @@ const Navbar = ({ isDark }) => {
       width="30"
       height="30"
       fill={isDark ? "000" : "#fff"}
-      class="bi bi-list"
+      className="bi bi-list"
       viewBox="0 0 16 16"
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
       />
     </svg>
@@ -40,9 +40,9 @@ const Navbar = ({ isDark }) => {
         {User && User.userData.userType === "ADMIN" && (
           <Link to="/admin">Admin</Link>
         )}
-        <Link>Collection</Link>
+        <Link to="/">Collection</Link>
         {User && <Link to={`/cart/${user.userData._id}`}>Cart</Link>}
-        <Link>My Orders</Link>
+        {User && <Link to={`/order/${user.userData._id}`}>My Orders</Link>}
         <p
           onClick={() => {
             if (User) {
@@ -57,7 +57,7 @@ const Navbar = ({ isDark }) => {
       </div>
       <div onClick={() => setMenu(true)} className="mobile_icon">
         {icon}
-        {menu && <MobileMenu menu={menu} setMenu={setMenu}/>}
+        {menu && <MobileMenu menu={menu} setMenu={setMenu} />}
       </div>
     </div>
   );
