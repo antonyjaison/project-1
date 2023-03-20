@@ -50,6 +50,9 @@ const MobileMenu = ({ menu, setMenu }) => {
             <>
               <Link to={`/cart/${user.userData._id}`}>Cart</Link>
               <Link to={`/orders/${user.userData._id}`}>My orders</Link>
+              {user && user.userData.userType === "ADMIN" && (
+                <Link to="/admin">Admin</Link>
+              )}
             </>
           )}
           <button
