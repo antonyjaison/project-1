@@ -3,9 +3,13 @@ import "./MobileMenu.css";
 import { useSpring, animated } from "@react-spring/web";
 import { useNavigate } from "react-router";
 import Logo from "../Logo/Logo";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/userSlice";
 
 const MobileMenu = ({ menu, setMenu }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const userData = localStorage.getItem("userData");
   const user = JSON.parse(userData);
   const MenuFade = useSpring({
@@ -23,7 +27,7 @@ const MobileMenu = ({ menu, setMenu }) => {
       width="30"
       height="30"
       fill="#fff"
-      class="bi bi-x-lg"
+      className="bi bi-x-lg"
       viewBox="0 0 16 16"
     >
       <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
@@ -33,28 +37,33 @@ const MobileMenu = ({ menu, setMenu }) => {
   return (
     <>
       <animated.div style={MenuFade} className="container mobile_menu_section">
-        <div onClick={() => setMenu(false)} className="mobile_menu_header">
+        <div className="mobile_menu_header">
           <Logo />
-          <div  onClick={() => setMenu(!menu)}>{closeIcon}</div>
+          <button onClick={() => setMenu()}>{closeIcon}</button>
         </div>
 
         <div className="mobile_menu_links">
-          <p>Collections</p>
-          <p onClick={() => navigate(`/cart/${user.userData._id}`)}>Cart</p>
-          <p onClick={() => navigate(`/orders/${user.userData._id}`)}>
-            My orders
-          </p>
-          <p
+          <Link to="/" onClick={() => setMenu(false)}>
+            Collections
+          </Link>
+          {user && (
+            <>
+              <Link to={`/cart/${user.userData._id}`}>Cart</Link>
+              <Link to={`/orders/${user.userData._id}`}>My orders</Link>
+            </>
+          )}
+          <button
             onClick={() => {
-              if (localStorage.getItem("userData") !== null) {
+              if (user) {
                 localStorage.clear();
+                dispatch(setUser(null));
               } else {
                 navigate("/login");
               }
             }}
           >
             {user ? "Logout" : "Login/Sign up"}
-          </p>
+          </button>
         </div>
       </animated.div>
     </>

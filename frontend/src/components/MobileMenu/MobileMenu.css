@@ -1,9 +1,9 @@
-.mobile_menu_section{
-    position: fixed;
-    padding: 15px 20px 0 40px;
-    background-color: black;
-    height: 100vh;
-    top: 0;
+.mobile_menu_section {
+  position: fixed;
+  padding: 15px 20px 0 40px;
+  background-color: black;
+  height: 100vh;
+  top: 0;
 }
 .mobile_menu_header {
   display: flex;
@@ -24,9 +24,24 @@
   line-height: 50px;
   overflow: hidden;
 }
-.mobile_menu_links > p{
-    font-size: 25px;
-    cursor: pointer;
-    color: #fff;
-    margin-top: 30px;
+.mobile_menu_links > a {
+  text-decoration: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.mobile_menu_links > button {
+  font-size: 25px;
+  padding: 0;
+  border: none;
+  background-color: black;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.mobile_menu_header > button {
+  background-color: currentColor;
+  border: none;
 }
