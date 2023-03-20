@@ -21,7 +21,6 @@ const OrderItems = () => {
       });
       if (res.ok) {
         const json = await res.json();
-        console.log(json);
         setOrders(json);
         setLoading(false);
       }

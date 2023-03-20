@@ -74,7 +74,7 @@ const CartDetails = () => {
     const json = await res.json();
 
     if (json.addressFound) {
-      setAddress(json);
+      setAddress(json.address);
       setAddressSection(false);
       setCheckoutLoading(false);
       setplaceOrderSection(true);

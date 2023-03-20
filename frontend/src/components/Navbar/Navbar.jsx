@@ -41,8 +41,8 @@ const Navbar = ({ isDark }) => {
           <Link to="/admin">Admin</Link>
         )}
         <Link to="/">Collection</Link>
-        {User && <Link to={`/cart/${user.userData._id}`}>Cart</Link>}
-        {User && <Link to={`/order/${user.userData._id}`}>My Orders</Link>}
+        {User && <Link to={`/cart/${User.userData._id}`}>Cart</Link>}
+        {User && <Link to={`/orders/${User.userData._id}`}>My Orders</Link>}
         <p
           onClick={() => {
             if (User) {
@@ -55,9 +55,12 @@ const Navbar = ({ isDark }) => {
           {user ? "Logout" : "Login/Sign up"}
         </p>
       </div>
-      <div onClick={() => setMenu(true)} className="mobile_icon">
-        {icon}
-        {menu && <MobileMenu menu={menu} setMenu={setMenu} />}
+      <div className="mobile_icon">
+        {menu ? (
+          <MobileMenu menu={menu} setMenu={() => setMenu(false)} />
+        ) : (
+          <button onClick={() => setMenu(true)}>{icon}</button>
+        )}
       </div>
     </div>
   );
