@@ -53,9 +53,11 @@ function App() {
             element={isAdmin() ? <AdminPage /> : <Navigate to="/" />}
           />
           <Route
-            path="/order/:id"
+            path="/orders/:id"
             element={user === null ? <Navigate to="/" /> : <OrderPage />}
           />
+          <Route />
+          <Route path="*" element={<div>Page Not Found</div>} />
           <Route />
         </Routes>
       </BrowserRouter>
