@@ -46,9 +46,9 @@ const OrderItems = () => {
               {orders.length > 0 ? (
                 <>
                   <div className="row">
+                    <h1>My Orders</h1>
                     {orders.map((order) => (
                       <>
-                        <h1>My Orders</h1>
                         <div className="col-lg-6 mt-3">
                           <CartCard
                             isOrderItem={true}

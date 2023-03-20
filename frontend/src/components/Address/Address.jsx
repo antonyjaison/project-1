@@ -29,6 +29,7 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
           landMark: landMark,
         }),
       });
+      
       if (res.ok) {
         const json = await res.json();
         console.log(json);

@@ -2,7 +2,6 @@ import React from "react";
 import "./MobileMenu.css";
 import { useSpring, animated } from "@react-spring/web";
 import { useNavigate } from "react-router";
-import { HashLink } from "react-router-hash-link";
 import Logo from "../Logo/Logo";
 
 const MobileMenu = ({ menu, setMenu }) => {
@@ -34,9 +33,9 @@ const MobileMenu = ({ menu, setMenu }) => {
   return (
     <>
       <animated.div style={MenuFade} className="container mobile_menu_section">
-        <div className="mobile_menu_header">
+        <div onClick={() => setMenu(false)} className="mobile_menu_header">
           <Logo />
-          <div onClick={() => setMenu(!menu)}>{closeIcon}</div>
+          <div  onClick={() => setMenu(!menu)}>{closeIcon}</div>
         </div>
 
         <div className="mobile_menu_links">

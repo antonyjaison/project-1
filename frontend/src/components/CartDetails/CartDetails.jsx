@@ -74,12 +74,13 @@ const CartDetails = () => {
     const json = await res.json();
     console.log(json);
 
-    if (!json.addressFind) {
-      setAddressSection(true);
-    } else {
+    if (json.addressFound) {
       setAddress(json.address);
-      setplaceOrderSection(true);
+      setAddressSection(false);
       setCheckoutLoading(false);
+      setplaceOrderSection(true);
+    } else {
+      setAddressSection(true);
     }
   };
   console.log(address);
@@ -179,7 +180,10 @@ const CartDetails = () => {
             {addressSection && (
               <>
                 <div className="address_wrapper">
-                  <Address setCheckoutLoading={setCheckoutLoading} setAddressSection={setAddressSection}/>
+                  <Address
+                    setCheckoutLoading={setCheckoutLoading}
+                    setAddressSection={setAddressSection}
+                  />
                 </div>
               </>
             )}

@@ -8,7 +8,7 @@
 }
 .address_section {
   width: 500px;
-  height: 680px;
+  height: fit-content;
   max-height: max-content;
   background-color: #f1f1f1;
   padding: 47px 57px;
@@ -67,7 +67,7 @@
 @media (max-width: 768px) {
   .address_section {
     width: 80%;
-    height: 680px;
+    height: fit-content;
     background-color: #f1f1f1;
     padding: 47px 30px;
   }
