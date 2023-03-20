@@ -6,42 +6,71 @@ import LoginPage from "./pages/LoginPage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import SignInPage from "./pages/SignInPage";
+import AdminPage from "./pages/AdminPage";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../src/features/userSlice";
+import { getUser } from "./features/userSlice";
+import { useState } from "react";
 
 function App() {
-  const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, []);
-  const user = useSelector((state) => state.user.user);
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/login"
-            element={user === null ? <Navigate to="/" /> : <LoginPage />}
-          />
-          <Route
-            path="/product/:id"
-            element={user === null ? <Navigate to="/login" /> : <ProductPage />}
-          />
-          <Route
-            path="/cart/:userId"
-            element={user === null ? <Navigate to="/" /> : <CartPage />}
-          />
-          <Route
-            path="/sign-in"
-            element={user === null ? <Navigate to="/" /> : <SignInPage />}
-          />
-          <Route />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+    const isAdmin = () => {
+        return user !== null && user?.userData.userType === "ADMIN";
+    };
+
+    useEffect(() => {
+        setLoading(true);
+        dispatch(getUser());
+        setLoading(false);
+    }, []);
+    const user = useSelector((state) => state.user.user);
+    console.log(user);
+    if (loading) return <div>Loading</div>;
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route
+                        path="/login"
+                        element={
+                            user === null ? <LoginPage /> : <Navigate to="/" />
+                        }
+                    />
+                    <Route
+                        path="/product/:id"
+                        element={
+                            user === null ? (
+                                <Navigate to="/login" />
+                            ) : (
+                                <ProductPage />
+                            )
+                        }
+                    />
+                    <Route
+                        path="/cart/:userId"
+                        element={
+                            user === null ? <Navigate to="/" /> : <CartPage />
+                        }
+                    />
+                    <Route
+                        path="/sign-in"
+                        element={
+                            user === null ? <SignInPage /> : <Navigate to="/" />
+                        }
+                    />
+                    <Route
+                        path="/admin"
+                        element={
+                            isAdmin() ? <AdminPage /> : <Navigate to="/" />
+                        }
+                    />
+                    <Route />
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;

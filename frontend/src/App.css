@@ -1,14 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap");
 * {
-  margin: 0;
+    margin: 0;
 }
 p,
 h1,
 h2,
 h3 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 body {
-  font-family: "Red Hat Display";
+    font-family: "Red Hat Display";
+}
+
+a {
+    color: black;
 }
