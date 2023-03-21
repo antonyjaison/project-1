@@ -17,6 +17,8 @@ const HomePage = () => {
     };
     fetchProducts();
   }, []);
+  
+  console.log(`${import.meta.env.VITE_SERVER_URL}/product/`)
 
   return (
     <div>
