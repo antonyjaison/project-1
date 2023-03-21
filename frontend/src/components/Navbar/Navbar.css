@@ -7,9 +7,9 @@
 }
 .nav_links {
   display: flex;
-  gap: 72px;
+  gap: 1rem;
 }
-.nav_links > :is(a, p) {
+.nav_links > :where(a, button) {
   color: currentColor;
   text-decoration: none;
   font-family: "Red Hat Display";
@@ -18,7 +18,24 @@
   font-size: 22px;
   line-height: 29px;
   cursor: pointer;
+  padding: 0.6em 1.5em;
+  border-radius: 0.25em;
 }
+
+.nav_links > :where(a, button):hover {
+  color: currentColor;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.nav-active {
+  font-weight: bold;
+}
+
+.nav_links > button {
+  border: none;
+  background-color: transparent;
+}
+
 .mobile_icon {
   display: none;
 }
@@ -33,6 +50,10 @@
     gap: 50px;
   }
   .nav_links > p {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  .nav_links > button {
     font-size: 20px;
     line-height: 29px;
   }

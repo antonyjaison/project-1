@@ -30,7 +30,7 @@ const PlaceOrder = ({
 
   const placeOrder = async () => {
     setLoading(true);
-    const res = await fetch("http://localhost:4000/order/", {
+    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/order/`, {
       method: "post",
       headers: {
         Accept: "application/json",
@@ -43,7 +43,7 @@ const PlaceOrder = ({
       const json = await res.json();
       setplaceOrderSection(false);
       setLoading(false);
-      navigate(`/order/${userData._id}`);
+      navigate(`/orders/`);
     }
   };
 

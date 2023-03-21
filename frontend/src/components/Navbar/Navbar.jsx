@@ -6,16 +6,20 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, setUser } from "../../features/userSlice";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { useLocation } from "react-router";
 
 const Navbar = ({ isDark }) => {
   var color = isDark ? "#000" : "#fff";
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const userData = localStorage.getItem("userData");
   const user = JSON.parse(userData);
   const User = useSelector((state) => state.user.user);
   const [menu, setMenu] = useState(false);
+
+  console.log(location.pathname);
 
   const icon = (
     <svg
@@ -38,22 +42,51 @@ const Navbar = ({ isDark }) => {
       <Logo fontSize={30} isDark={isDark} />
       <div style={{ color: color }} className="nav_links">
         {User && User.userData.userType === "ADMIN" && (
-          <Link to="/admin">Admin</Link>
+          <Link
+            className={
+              location.pathname === "/admin" ? "nav-active" : undefined
+            }
+            to="/admin"
+          >
+            Admin
+          </Link>
         )}
-        <Link to="/">Collection</Link>
-        {User && <Link to={`/cart/${User.userData._id}`}>Cart</Link>}
-        {User && <Link to={`/orders/${User.userData._id}`}>My Orders</Link>}
-        <p
+        <Link
+          className={location.pathname === "/" ? "nav-active" : undefined}
+          to="/"
+        >
+          Collection
+        </Link>
+        {User && User.userData.userType !== "ADMIN" && (
+          <Link
+            className={location.pathname === "/cart" ? "nav-active" : undefined}
+            to="/cart"
+          >
+            Cart
+          </Link>
+        )}
+        {User && User.userData.userType !== "ADMIN" && (
+          <Link
+            className={
+              location.pathname === "/orders" ? "nav-active" : undefined
+            }
+            to="/orders"
+          >
+            My Orders
+          </Link>
+        )}
+        <button
           onClick={() => {
             if (User) {
               localStorage.clear();
               dispatch(setUser(null));
+              navigate("/");
             }
             navigate("/login");
           }}
         >
           {user ? "Logout" : "Login/Sign up"}
-        </p>
+        </button>
       </div>
       <div className="mobile_icon">
         {menu ? (

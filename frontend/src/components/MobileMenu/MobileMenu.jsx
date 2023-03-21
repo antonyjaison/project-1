@@ -43,13 +43,41 @@ const MobileMenu = ({ menu, setMenu }) => {
         </div>
 
         <div className="mobile_menu_links">
-          <Link to="/" onClick={() => setMenu(false)}>
+          <Link
+            className={location.pathname === "/" ? "nav-active" : undefined}
+            to="/"
+            onClick={() => setMenu(false)}
+          >
             Collections
           </Link>
-          {user && (
+          {user && user.userData.userType === "ADMIN" && (
+            <Link
+              className={
+                location.pathname === "/admin" ? "nav-active" : undefined
+              }
+              to="/admin"
+            >
+              Admin
+            </Link>
+          )}
+          {user && user.userData.userType !== "ADMIN" && (
             <>
-              <Link to={`/cart/${user.userData._id}`}>Cart</Link>
-              <Link to={`/orders/${user.userData._id}`}>My orders</Link>
+              <Link
+                className={
+                  location.pathname === "/cart" ? "nav-active" : undefined
+                }
+                to="/cart"
+              >
+                Cart
+              </Link>
+              <Link
+                className={
+                  location.pathname === "/orders" ? "nav-active" : undefined
+                }
+                to="/orders"
+              >
+                My orders
+              </Link>
             </>
           )}
           <button

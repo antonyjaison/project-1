@@ -5,6 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../features/userSlice";
+import { useLayoutEffect } from "react";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -13,10 +14,18 @@ const ProductDetails = () => {
   const userData = localStorage.getItem("userData");
   const token = JSON.parse(userData).token;
   const [loading, setLoading] = useState(false);
+  const inventory = useSelector((state) => state.cart.cartProducts);
+
+  const isInventory = inventory.find((pro) => pro.product._id === id)
+    ? true
+    : false;
+  const [canAdd, setCanAdd] = useState(isInventory);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
-      const res = await fetch(`http://localhost:4000/product/${id}`);
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/product/${id}`
+      );
       if (res.ok) {
         const json = await res.json();
         setProductDetails(json);
@@ -28,7 +37,7 @@ const ProductDetails = () => {
   const addToCart = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:4000/cart/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/cart/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +72,14 @@ const ProductDetails = () => {
                   <p>
                     Starts at <span>Rs. {productDetails.price}</span>
                   </p>
-                  <button onClick={() => addToCart()} className="buy_button">
+                  <button
+                    disabled={canAdd}
+                    onClick={() => {
+                      addToCart();
+                      setCanAdd(true);
+                    }}
+                    className="buy_button"
+                  >
                     {loading ? (
                       <ClipLoader
                         aria-label="Loading Spinner"
@@ -71,6 +87,8 @@ const ProductDetails = () => {
                         loading={loading}
                         size={20}
                       />
+                    ) : canAdd ? (
+                      "Added to cart"
                     ) : (
                       "Add to Cart"
                     )}

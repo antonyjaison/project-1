@@ -24,14 +24,17 @@ const SignUp = () => {
         email: email,
         password: password,
       };
-      const res = await fetch("http://localhost:4000/auth/register", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (res.ok) {
         const json = await res.json();
         dispatch(setUser(json));
