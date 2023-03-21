@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import CartCard from "../CartCard/CartCard";
 import "./OrderItems.css";
 import ClipLoader from "react-spinners/ClipLoader";
+import OrderModal from "../OrderModal/OrderModal";
+import OrderCard from "../OrderCard/OrderCard";
 
 const OrderItems = () => {
   const userData = localStorage.getItem("userData");
@@ -9,18 +11,22 @@ const OrderItems = () => {
   const id = JSON.parse(userData).userData._id;
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currOrder, setCurrOrder] = useState(null);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     const fetchOrders = async () => {
       setLoading(true);
-      const res = await fetch(`http://localhost:4000/order/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/order/`, {
         method: "GET",
+        mode: "cors",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       if (res.ok) {
         const json = await res.json();
+        console.log(json);
         setOrders(json);
         setLoading(false);
       }
@@ -47,11 +53,17 @@ const OrderItems = () => {
                   <div className="row">
                     <h1>My Orders</h1>
                     {orders.map((order) => (
-                      <div key={order.product._id} className="col-lg-6 mt-3">
-                        <CartCard
-                          isOrderItem={true}
-                          count={order.product.count}
-                          product={order.product.product}
+                      <div
+                        onClick={() => {
+                          setCurrOrder(order);
+                          setModal(true);
+                        }}
+                        key={order._id}
+                        className="col-lg-6 mt-3"
+                      >
+                        <OrderCard
+                          id={order._id}
+                          products={order.order_items}
                           status={order.status}
                         />
                       </div>
@@ -67,6 +79,9 @@ const OrderItems = () => {
           </>
         )}
       </div>
+      {modal && currOrder && (
+        <OrderModal order={currOrder} closeModal={() => setModal(false)} />
+      )}
     </>
   );
 };

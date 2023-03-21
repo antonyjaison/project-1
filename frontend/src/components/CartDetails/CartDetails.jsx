@@ -21,22 +21,21 @@ const CartDetails = () => {
   const cartProducts = useSelector((state) => state.cart.cartProducts);
 
   var count = 0;
-
+  const fetchCartItems = async () => {
+    setLoading(true);
+    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/cart/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (res.ok) {
+      const json = await res.json();
+      dispatch(addToCart(json.inventory));
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchCartItems = async () => {
-      setLoading(true);
-      const res = await fetch(`http://localhost:4000/cart/`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (res.ok) {
-        const json = await res.json();
-        dispatch(addToCart(json.inventory));
-        setLoading(false);
-      }
-    };
     fetchCartItems();
   }, []);
 
@@ -48,7 +47,7 @@ const CartDetails = () => {
 
   const removeFromCart = async (id) => {
     try {
-      const res = await fetch(`http://localhost:4000/cart/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/cart/${id}`, {
         method: "delete",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -65,7 +64,7 @@ const CartDetails = () => {
 
   const placeOrder = async () => {
     setCheckoutLoading(true);
-    const res = await fetch("http://localhost:4000/user/address", {
+    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/user/address`, {
       method: "get",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -112,6 +111,7 @@ const CartDetails = () => {
                           count={item.count}
                           product={item.product}
                           removeFromCart={() => removeFromCart(item._id)}
+                          refetchCart={() => fetchCartItems()}
                         />
                       </div>
                     ))}
@@ -146,7 +146,10 @@ const CartDetails = () => {
                             </div>
                             <div className="card_qty">
                               <p>Qty : {item.count}</p>
-                              <p>{item.count * item.product.price} /-</p>
+                              <p>
+                                {(item.count * item.product.price).toFixed(2)}{" "}
+                                /-
+                              </p>
                             </div>
                           </div>
                         );
@@ -154,7 +157,7 @@ const CartDetails = () => {
 
                       <div className="cart_item_details">
                         <p>Grand total : </p>
-                        <p>Rs. {total} /-</p>
+                        <p>Rs. {total.toFixed(2)} /-</p>
                       </div>
                     </div>
                     <button

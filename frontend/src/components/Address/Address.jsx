@@ -14,21 +14,24 @@ const Address = ({ setAddressSection, setCheckoutLoading }) => {
   const addAddress = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:4000/user/address", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          city: city,
-          country: country,
-          pincode: pincode,
-          state: state,
-          landMark: landMark,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/user/address`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            city: city,
+            country: country,
+            pincode: pincode,
+            state: state,
+            landMark: landMark,
+          }),
+        }
+      );
 
       if (res.ok) {
         const json = await res.json();

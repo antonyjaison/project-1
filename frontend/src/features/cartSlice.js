@@ -16,9 +16,13 @@ export const cartSlice = createSlice({
         (item) => item._id !== action.payload
       );
     },
+
+    setCart: (state, action) => {
+      state.cartProducts = action.payload;
+    },
   },
 });
 
 export default cartSlice.reducer;
 
-export const { deleteFromCart, addToCart } = cartSlice.actions;
+export const { deleteFromCart, addToCart, setCart } = cartSlice.actions;

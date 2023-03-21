@@ -1,8 +1,8 @@
-.users_tab {
+.orders_tab {
   overflow: auto;
 }
 
-.orders_tab select {
+.select {
   height: max-content;
   padding: 0.3rem 0.25rem;
   background-color: white;
