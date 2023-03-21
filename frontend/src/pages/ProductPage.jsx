@@ -4,6 +4,7 @@ import Footer from '../components/Footer/Footer'
 import ProductDetails from '../components/ProductDetails/ProductDetails'
 
 const ProductPage = () => {
+
   useEffect(() => {
     window.scrollTo(0,0)
   },[])

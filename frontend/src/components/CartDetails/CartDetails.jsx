@@ -71,6 +71,7 @@ const CartDetails = () => {
       },
     });
     const json = await res.json();
+    console.log(json)
 
     if (json.addressFound) {
       setAddress(json.address);
