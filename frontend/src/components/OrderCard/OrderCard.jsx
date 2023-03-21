@@ -15,9 +15,6 @@ const OrderCard = ({ id, products, status }) => {
         <div className="cart_details">
           <div className="cart_card_heading">
             <h4 className="mt-2">Order ID: {id}</h4>
-            <div className="quantity">
-              <label htmlFor="">Qty : </label>
-            </div>
           </div>
           <p className="cart_price">Rs. {totalPrice.toFixed(2)}</p>
           <p className="cart_price mt-2">Order status : {status}</p>
