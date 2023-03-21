@@ -19,7 +19,6 @@ const Navbar = ({ isDark }) => {
   const User = useSelector((state) => state.user.user);
   const [menu, setMenu] = useState(false);
 
-  console.log(location.pathname);
 
   const icon = (
     <svg
