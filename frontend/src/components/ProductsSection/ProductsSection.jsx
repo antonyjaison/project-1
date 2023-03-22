@@ -20,12 +20,14 @@ const ProductsSection = () => {
               {products.map((product) => {
                 return (
                   <div key={product._id} className="p_card">
+                    {/* productCard is a component used for showing each products productcard comp is mapped by the  products array */}
                     <ProductCard {...product} />
                   </div>
                 );
               })}
             </div>
           ) : (
+            // load till the products is fetched
             <ClipLoader
               aria-label="Loading Spinner"
               color="#000"

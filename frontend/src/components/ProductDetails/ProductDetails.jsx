@@ -59,6 +59,7 @@ const ProductDetails = () => {
       <div className="container">
         <div className="productDetails_wrapper">
           <div className="row">
+            {/* check the product details is available or not if not the spinner will load*/}
             {productDetails ? (
               <>
                 <div className="col-lg-6 col-md-7 col-12 product_image">

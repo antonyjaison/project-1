@@ -10,14 +10,13 @@ const ProductCard = ({ _id, image, name, price, description }) => {
 
   const handleClick = () => {
     navigate(`/product/${_id}`)
-
   }
   return (
     <div onClick={handleClick} className="card_wrapper">
       <img src={image} alt="chair" />
       <div className="product_details">
         <h3>{name}</h3>
-        <p>Rs. {price}</p>
+        <p>£ {price}</p>
       </div>
     </div>
   );

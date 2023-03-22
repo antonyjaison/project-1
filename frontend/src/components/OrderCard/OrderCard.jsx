@@ -16,7 +16,7 @@ const OrderCard = ({ id, products, status }) => {
           <div className="cart_card_heading">
             <h4 className="mt-2">Order ID: {id}</h4>
           </div>
-          <p className="cart_price">Rs. {totalPrice.toFixed(2)}</p>
+          <p className="cart_price">£ {totalPrice.toFixed(2)}</p>
           <p className="cart_price mt-2">Order status : {status}</p>
         </div>
       </div>

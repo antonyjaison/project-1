@@ -18,12 +18,14 @@ const SignUp = () => {
   const signUp = async (e) => {
     e.preventDefault();
 
+    // check it is a valid email or not if not it will stop
     if (validator.isEmail(email) && password.length > 5 && name.length > 0) {
       const data = {
         name: name,
         email: email,
         password: password,
       };
+      // login request send to server
       const res = await fetch(
         `${import.meta.env.VITE_SERVER_URL}/auth/register`,
         {
@@ -37,6 +39,8 @@ const SignUp = () => {
       );
       if (res.ok) {
         const json = await res.json();
+
+        // the response data is passed to setUser and set the user to the data from server
         dispatch(setUser(json));
         setEmail("");
         setName("");

@@ -8,6 +8,8 @@ import { setProducts } from "../features/productSlice";
 const HomePage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+
+    // fetch products from backend and pass to setProducts and set into products array
     const fetchProducts = async () => {
       const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/product/`);
       if (res.ok) {

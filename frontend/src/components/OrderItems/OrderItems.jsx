@@ -17,6 +17,8 @@ const OrderItems = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       setLoading(true);
+
+      // fetch order details from server and set to the state orders
       const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/order/`, {
         method: "GET",
         mode: "cors",
@@ -79,6 +81,7 @@ const OrderItems = () => {
           </>
         )}
       </div>
+      {/* to show model when clicked */}
       {modal && currOrder && (
         <OrderModal order={currOrder} closeModal={() => setModal(false)} />
       )}
