@@ -157,7 +157,7 @@ const CartDetails = () => {
 
                       <div className="cart_item_details">
                         <p>Grand total : </p>
-                        <p>Rs. {total.toFixed(2)} /-</p>
+                        <p>£ {total.toFixed(2)} /-</p>
                       </div>
                     </div>
                     <button

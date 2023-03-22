@@ -61,7 +61,7 @@ const CartCard = ({ count, product, removeFromCart, refetchCart }) => {
             </div>
           </div>
 
-          <p className="cart_price">Rs. {product.price}</p>
+          <p className="cart_price">£ {product.price}</p>
         </div>
       </div>
       <button onClick={removeFromCart} className="cart_remove">
