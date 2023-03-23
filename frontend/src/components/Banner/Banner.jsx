@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
+import SplashScreen from "../SplashScreen/SplashScreen";
 import "./Banner.css";
 
 const Banner = ({ bannerImg, heading }) => {

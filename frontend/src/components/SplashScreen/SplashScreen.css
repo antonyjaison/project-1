@@ -1,0 +1,31 @@
+.splash_screen_wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.781);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    width: 400px;
+    height: 700px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.wrapper > h3{
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    font-weight: 700;
+}
+
+@media(max-width:430px){
+    .wrapper{
+        width: 90%;
+        height: 70vh;
+    }
+}
