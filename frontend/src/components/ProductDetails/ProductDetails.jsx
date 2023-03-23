@@ -71,7 +71,7 @@ const ProductDetails = () => {
                   <h1>{productDetails.name}</h1>
                   <p>{productDetails.description}</p>
                   <p>
-                    Starts at <span>Rs. {productDetails.price}</span>
+                    Starts at <span>£ {productDetails.price}</span>
                   </p>
                   <button
                     disabled={canAdd}

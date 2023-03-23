@@ -30,20 +30,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* <div className="col-lg-9 col-8 col-12 footer_link_section">
-              <div className="footer_link">
-                <h2>Social media</h2>
-                <p>Instagram</p>
-                <p>Twitter</p>
-                <p>YouTube</p>
-              </div>
-              <div className="footer_link">
-                <h2>Contact Us</h2>
-                <p>Mail us</p>
-                <p>Call us</p>
-              </div>
-            </div> */}
-
             <div className="container">
               <hr className="footer_line" />
             </div>
